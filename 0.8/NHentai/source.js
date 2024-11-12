@@ -900,7 +900,7 @@ var _Sources = (() => {
       return word.charAt(0).toUpperCase() + word.slice(1);
     }).join(" ");
   }
-  var typeMap = { "j": "jpg", "p": "png", "g": "gif" };
+  var typeMap = { "j": "jpg", "p": "png", "g": "gif", "w": "webp" };
   var typeOfImage = (image) => {
     return typeMap[image.t] ?? "";
   };
