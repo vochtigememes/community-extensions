@@ -42,10 +42,10 @@ import {
     resetSettings
 } from './BatoToSettings'
 
-const BATO_DOMAIN = 'https://bato.to'
+const BATO_DOMAIN = 'hhttps://batocomic.org'
 
 export const BatoToInfo: SourceInfo = {
-    version: '3.1.2',
+    version: '3.1.3',
     name: 'BatoTo',
     icon: 'icon.png',
     author: 'niclimcy',
