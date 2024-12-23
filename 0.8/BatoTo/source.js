@@ -3158,9 +3158,9 @@ var _Sources = (() => {
   };
 
   // src/BatoTo/BatoTo.ts
-  var BATO_DOMAIN = "hhttps://batocomic.org";
+  var BATO_DOMAIN = "https://batocomic.org";
   var BatoToInfo = {
-    version: "3.1.3",
+    version: "3.1.4",
     name: "BatoTo",
     icon: "icon.png",
     author: "niclimcy",
