@@ -1991,7 +1991,10 @@ var _Sources = (() => {
     const decodeBase64 = (str) => {
       const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       let output = "";
-      let buffer, bc = 0, bs = 0;
+      let buffer = 0;
+      let bc = 0;
+      let bs = 0;
+      str = str.replace(/=/g, "");
       for (let i = 0; i < str.length; i++) {
         const charCode = chars.indexOf(str.charAt(i));
         if (charCode === -1) continue;
