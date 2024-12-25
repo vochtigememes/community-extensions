@@ -152,24 +152,29 @@ export async function parseAccessToken(accessToken: string | undefined) {
     const tokenBodyBase64 = accessToken.split('.')[1];
     if (!tokenBodyBase64) return undefined;
 
-    const decodeBase64 = (str: string) => {
+    const decodeBase64 = (str: string): string => {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
         let output = '';
-        let buffer, bc = 0, bs = 0;
-
+        let buffer = 0;  
+        let bc = 0;      
+        let bs = 0;      
+    
+        str = str.replace(/=/g, '');
+    
         for (let i = 0; i < str.length; i++) {
             const charCode = chars.indexOf(str.charAt(i));
-            if (charCode === -1) continue;
-
+            if (charCode === -1) continue; 
+    
             buffer = (buffer << 6) | charCode;
             bc += 6;
-
+    
             if (bc >= 8) {
                 bs = (buffer >> (bc - 8)) & 255;
                 output += String.fromCharCode(bs);
                 bc -= 8;
             }
         }
+    
         return output;
     };
 
