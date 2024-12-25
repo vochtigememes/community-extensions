@@ -152,7 +152,7 @@ export async function parseAccessToken(accessToken: string | undefined) {
     const tokenBodyBase64 = accessToken.split('.')[1]
     if (!tokenBodyBase64) return undefined
 
-    const tokenBodyJSON = Buffer.from(tokenBodyBase64, 'base64').toString('ascii')
+    const tokenBodyJSON = atob(tokenBodyBase64)
     return JSON.parse(tokenBodyJSON)
 }
 
