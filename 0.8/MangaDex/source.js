@@ -1988,7 +1988,7 @@ var _Sources = (() => {
     if (!accessToken) return void 0;
     const tokenBodyBase64 = accessToken.split(".")[1];
     if (!tokenBodyBase64) return void 0;
-    const tokenBodyJSON = Buffer.from(tokenBodyBase64, "base64").toString("ascii");
+    const tokenBodyJSON = atob(tokenBodyBase64);
     return JSON.parse(tokenBodyJSON);
   }
   var authRequestCache = {};
