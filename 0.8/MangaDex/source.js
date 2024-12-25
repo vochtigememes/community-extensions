@@ -1988,7 +1988,24 @@ var _Sources = (() => {
     if (!accessToken) return void 0;
     const tokenBodyBase64 = accessToken.split(".")[1];
     if (!tokenBodyBase64) return void 0;
-    const tokenBodyJSON = atob(tokenBodyBase64);
+    const decodeBase64 = (str) => {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+      let output = "";
+      let buffer, bc = 0, bs = 0;
+      for (let i = 0; i < str.length; i++) {
+        const charCode = chars.indexOf(str.charAt(i));
+        if (charCode === -1) continue;
+        buffer = buffer << 6 | charCode;
+        bc += 6;
+        if (bc >= 8) {
+          bs = buffer >> bc - 8 & 255;
+          output += String.fromCharCode(bs);
+          bc -= 8;
+        }
+      }
+      return output;
+    };
+    const tokenBodyJSON = decodeBase64(tokenBodyBase64);
     return JSON.parse(tokenBodyJSON);
   }
   var authRequestCache = {};
